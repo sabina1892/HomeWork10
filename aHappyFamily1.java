@@ -33,12 +33,11 @@ public class aHappyFamily1 {
         schedule.put(DayOfWeek.SUNDAY.name(), "do home work");
         mother.setSchedule(schedule);
         mother1.setSchedule(schedule);
-        Human1 child = new Human1("Michael", "Karleone", 1977,
+        Human1 child = new Human1("Michael", "Karleone", 2000,
                 95, schedule,family);
-        Human1 child1 = new Human1("Sergio", "Davidson", 1993,
+        Human1 child1 = new Human1("Sergio", "Davidson", 1992,
                 93, schedule,family1);
         Set<Pet1> bezdim_pet = new HashSet<>();
-        bezdim_pet.add(pet);
         family.setPet(bezdim_pet);
         family1.setPet(bezdim_pet);
         Men men = new Men();
@@ -98,9 +97,7 @@ public class aHappyFamily1 {
         System.out.println(father.describeAge(today,year));
 
 
-        Human1 adoptedChild = new Human1("Anna","Berkley","10/01/2015",96);
-        System.out.println(adoptedChild);
-
+        System.out.println(familyController.adoptChild(new Human1("Jack", "Tomson", "24/03/2001", 100),family01));
 
 
 

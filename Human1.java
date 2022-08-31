@@ -2,12 +2,17 @@ package HomeWork6;
 
 
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class Human1 {
-    private static final SimpleDateFormat format1 = new SimpleDateFormat("dd/MM/yyyy ");
+    //private static final SimpleDateFormat format1 = new SimpleDateFormat("dd/MM/yyyy ");
     private String name;
     private String surname;
     private long dateOfBirthyear;
@@ -29,16 +34,13 @@ public class Human1 {
         this.dateOfBirthyear = dateOfBirthyear;
 
     }
-    public Human1(String name, String surname, long dateOfBirthyear, int iq ) throws ParseException {
+    public Human1(String name, String surname, String dateOfBirthyear, int iq) {
         this.name = name;
         this.surname = surname;
-        this.dateOfBirthyear = ;
-        this.iq=iq;
+        this.dateOfBirthyear = convert(dateOfBirthyear);
+        this.iq = iq;
     }
 
-    /*private Date getFormattedDate(String dateOfBirthyear) throws ParseException {
-        return format1.parse(dateOfBirthyear);
-    }*/
 
     public Human1(
             String name,
@@ -56,9 +58,7 @@ public class Human1 {
         this.family = family;
     }
 
-    public Human1(Family adoptChild) {
 
-    }
 
     public void setName(String name) {
         this.name = name;
@@ -118,6 +118,11 @@ public class Human1 {
         return day;
     }
 
+    private long convert(String date) {
+        return LocalDate.parse(date, DateTimeFormatter.ofPattern("dd/MM/yyyy"))
+                .atStartOfDay().toInstant(ZoneId.systemDefault().getRules().getOffset(LocalDateTime.now()))
+                .toEpochMilli();
+    }
 
     @Override
     public boolean equals(Object o) {
